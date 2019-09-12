@@ -19,8 +19,13 @@ const getInstructions = id => {
     .first();
 };
 
+const getRecipeNames = () => {
+  return db("recipes").select("name");
+};
+
 module.exports = {
   getRecipes,
   getIngredientList,
-  getInstructions
+  getInstructions,
+  getRecipeNames
 };
