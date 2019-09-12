@@ -12,7 +12,15 @@ const getIngredientList = id => {
     .where({ "recipes.id": id });
 };
 
+const getInstructions = id => {
+  return db("recipes")
+    .select("instructions")
+    .where("id", id)
+    .first();
+};
+
 module.exports = {
   getRecipes,
-  getIngredientList
+  getIngredientList,
+  getInstructions
 };
