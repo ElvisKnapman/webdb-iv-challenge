@@ -45,4 +45,16 @@ router.get("/:id/instructions", async (req, res) => {
   }
 });
 
+router.get("/titles", async (req, res) => {
+  try {
+    const result = await Recipes.getRecipeNames();
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: "Server encountered error retrieving recipe titles" });
+  }
+});
+
 module.exports = router;
