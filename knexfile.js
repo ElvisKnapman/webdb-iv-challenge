@@ -8,10 +8,16 @@ module.exports = {
       filename: "./data/recipebook.db3"
     },
     migrations: {
-      filename: "./data/migrations"
+      directory: "./data/migrations"
     },
     seeds: {
-      filename: "./data/seeds"
+      directory: "./data/seeds"
+    },
+
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run("PRAGMA foreign_keys = ON", done);
+      }
     }
   }
 };
